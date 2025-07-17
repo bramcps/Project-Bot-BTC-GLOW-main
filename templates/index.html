@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitSeer3000 Pro Trading Terminal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Library untuk grafik candlestick profesional -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="main-header">
+            <div class="logo">
+                <h1>📈 BTC/USD</h1>
+            </div>
+            <div class="metrics">
+                <div class="metric-item">
+                    <span class="label">Harga</span>
+                    <span class="value" id="current-price">$0.00</span>
+                </div>
+                <div class="metric-item">
+                    <span class="label">24h High</span>
+                    <span class="value" id="high-24h">$0.00</span>
+                </div>
+                <div class="metric-item">
+                    <span class="label">24h Low</span>
+                    <span class="value" id="low-24h">$0.00</span>
+                </div>
+                <div class="metric-item">
+                    <span class="label">Prediksi AI</span>
+                    <span class="value" id="prediction-price">$0.00</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- Kolom Kiri: Panel Kontrol -->
+            <aside class="control-panel">
+                <div class="panel-section">
+                    <h3>🕹️ Panel Kontrol</h3>
+                    <div class="control-item">
+                        <label for="target-profit">Target Profit (%)</label>
+                        <input type="number" id="target-profit" value="2.0" step="0.1">
+                    </div>
+                    <div class="control-item">
+                        <label for="stop-loss">Stop Loss (%)</label>
+                        <input type="number" id="stop-loss" value="1.0" step="0.1">
+                    </div>
+                </div>
+                <div class="panel-section">
+                    <h3>📊 Status Posisi</h3>
+                    <div id="status-box" class="status-box status-inactive">
+                        <span id="status-text">TIDAK AKTIF</span>
+                    </div>
+                    <div class="pnl-info">
+                        <span>P/L: </span><span id="pnl-value">N/A</span>
+                    </div>
+                </div>
+                <div class="panel-section">
+                    <h3>📋 Log Aktivitas</h3>
+                    <div id="log-box" class="log-box">
+                        <p>Log Aktivitas Bot Dimulai...</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Kolom Kanan: Grafik Utama -->
+            <section class="chart-section">
+                <div id="candlestick-chart"></div>
+                <div class="decision-bar">
+                    <span>Sinyal AI: <b id="ai-signal">TAHAN</b></span>
+                    <span>Keputusan Bot: <b id="bot-decision">Menunggu...</b></span>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Menghubungkan ke file JavaScript kita -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
